@@ -60,7 +60,7 @@ public class ReaderActivity extends Activity {
             } catch (IllegalAccessException e) {
             }
         } else {
-            // No such method.  Stores the current URL.
+            // No such method.  Stores the current URL. TODO: figure out suspend
             suspendUrl = myWebView.getUrl();
             // And loads a URL without any processing.
             myWebView.loadUrl(WEBPAGE_NOTHING);
