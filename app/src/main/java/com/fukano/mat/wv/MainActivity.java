@@ -1,4 +1,4 @@
-package com.dealfaro.luca.webviewexample;
+package com.fukano.mat.wv;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -21,7 +21,7 @@ public class MainActivity extends ActionBarActivity {
     static final public String MYPREFS = "myprefs";
     static final public String PREF_URL = "restore_url";
     static final public String WEBPAGE_NOTHING = "about:blank";
-    static final public String MY_WEBPAGE = "http://users.soe.ucsc.edu/~luca/android.html";
+    static final public String MY_WEBPAGE = "http://users.soe.ucsc.edu/~mat/android.html";
     static final public String LOG_TAG = "webview_example";
 
     WebView myWebView;

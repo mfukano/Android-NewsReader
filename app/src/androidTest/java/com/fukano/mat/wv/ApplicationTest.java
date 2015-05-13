@@ -1,4 +1,4 @@
-package com.dealfaro.luca.webviewexample;
+package com.fukano.mat.wv;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
