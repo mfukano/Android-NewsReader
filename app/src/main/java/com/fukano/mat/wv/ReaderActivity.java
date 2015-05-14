@@ -1,30 +1,54 @@
 package com.fukano.mat.wv;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 /**
  * Created by matfukano on 5/13/15.
  */
 public class ReaderActivity extends Activity {
 
+    static final public String WEBPAGE_NOTHING = "about:blank";
+
+    private String suspendUrl = null;
+
     WebView myWebView;
+    String site;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WebView myWebView = (WebView) findViewById(R.id.webView1);
-        myWebView.setWebViewClient(new WebViewClient());
+        Intent intent = getIntent();
+        site = intent.getStringExtra("site");
+        setContentView(R.layout.webview);
+        myWebView = (WebView) findViewById(R.id.webView1);
+        myWebView.setWebViewClient(new MyWebViewClient());
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        myWebView.loadUrl(site);
     }
 
+    private class MyWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if (Uri.parse(url).getHost().equals(site)) {
+                // This is my web site, so do not override; let my WebView load the page
+                return false;
+            }
+            // Otherwise, the link is not for a page on my site,
+            // so launch another Activity that handles URLs
+            /*Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+            return true;*/
+            view.loadUrl(url);
+            return true;
+        }
+    }
 
     /*
      *  Changes back button press action -- if there's history, move back a page.
@@ -44,56 +68,19 @@ public class ReaderActivity extends Activity {
 
     @Override
     public void onPause() {
-
-        Method pause = null;
-        // Resumes the webview.
-        try {
-            pause = WebView.class.getMethod("onPause");
-        } catch (SecurityException e) {
-            // Nothing
-        } catch (NoSuchMethodException e) {
-            // Nothing
-        } if (pause != null) {
-            try {
-                pause.invoke(myWebView);
-            } catch (InvocationTargetException e) {
-            } catch (IllegalAccessException e) {
-            }
-        } else {
-            // No such method.  Stores the current URL. TODO: figure out suspend
-            suspendUrl = myWebView.getUrl();
-            // And loads a URL without any processing.
-            myWebView.loadUrl(WEBPAGE_NOTHING);
-        }
+        myWebView.onPause();
         super.onPause();
     }
 
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
-
-        Method resume = null;
-        // Resumes the webview.
-        try {
-            resume = WebView.class.getMethod("onResume");
-        } catch (SecurityException e) {
-            // Nothing
-        } catch (NoSuchMethodException e) {
-            // Nothing
-        } if (resume != null) {
-            try {
-                resume.invoke(myWebView);
-            } catch (InvocationTargetException e) {
-            } catch (IllegalAccessException e) {
-            }
-        } else {
-            // No such method.  Restores the suspended URL.
-            if (suspendUrl == null) {
-                myWebView.loadUrl(WEBVIEW_HOME);
-            } else {
-                myWebView.loadUrl(suspendUrl);
-            }
-        }
+        myWebView.onResume();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+    }
 }

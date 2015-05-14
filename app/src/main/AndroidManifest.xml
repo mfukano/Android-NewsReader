@@ -17,6 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.fukano.mat.wv.ReaderActivity"
+            android:label="@string/title_reader" >
+        </activity>
     </application>
 
 </manifest>
