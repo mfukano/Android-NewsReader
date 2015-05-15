@@ -1,16 +1,15 @@
 package com.fukano.mat.wv;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 
-public class MainActivity extends ActionBarActivity {
-
+public class MainActivity extends Activity {
     Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +20,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void onClickN1 (View v) {
         Intent intent = new Intent(context, ReaderActivity.class);
-        String s = "http://www.sfgate.com";
+        String s = "http://www.theguardian.com/us";
         intent.putExtra("site", s);
         startActivity(intent);
     }
@@ -51,6 +50,11 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -71,4 +75,5 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
