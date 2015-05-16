@@ -1,6 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -8,23 +7,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="horizontal"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/bg">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="70dp">
+        android:layout_marginLeft="30dp">
         <ImageButton
             android:layout_marginLeft="20dp"
             android:id="@+id/button1"
+            android:src="@drawable/g"
             android:text="Prick"
             android:onClick="onClickN1"
-            android:padding="5dp"
             android:textColor="#ffffff"
             android:elevation="8dp"
             android:layout_gravity="center|left"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_alignParentBottom="true"
             android:tint="@android:color/white"
             android:background="@drawable/circle"/>
@@ -35,13 +35,13 @@
         <ImageButton
             android:id="@+id/button2"
             android:text="Prick"
+            android:src="@drawable/sjm"
             android:onClick="onClickN2"
-            android:padding="5dp"
             android:textColor="#ffffff"
             android:elevation="8dp"
             android:layout_gravity="center"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_alignParentBottom="true"
             android:tint="@android:color/white"
             android:background="@drawable/circle2"/>
@@ -49,18 +49,18 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginRight="70dp">
+        android:layout_marginRight="30dp">
         <ImageButton
             android:layout_marginRight="20dp"
             android:id="@+id/button3"
             android:text="Prick"
+            android:src="@drawable/scs"
             android:onClick="onClickN3"
-            android:padding="5dp"
             android:textColor="#ffffff"
             android:elevation="8dp"
             android:layout_gravity="center|right"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_alignParentBottom="true"
             android:tint="@android:color/white"
             android:background="@drawable/circle3"/>

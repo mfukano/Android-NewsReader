@@ -8,4 +8,9 @@
 
     <color name="Color3Primary">#FFCC80</color>
     <color name="Color3PrimaryDark">#F9A825</color>
+
+    <color name="Color4Primary">#00E676</color>
+    <color name="Color4PrimaryDark">#2E7D32</color>
+
+    <color name="bg">#00EB78</color>
 </resources>

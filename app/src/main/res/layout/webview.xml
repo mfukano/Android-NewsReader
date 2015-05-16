@@ -7,4 +7,24 @@
     <WebView android:id="@+id/webview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageButton
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/shareicon2"
+            android:id="@+id/button3"
+            android:text="Prick"
+            android:onClick="sharePage"
+            android:textColor="#ffffff"
+            android:elevation="8dp"
+            android:layout_gravity="right|bottom"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:tint="@android:color/white"
+            android:background="@drawable/circle4"/>
+    </FrameLayout>
 </RelativeLayout>

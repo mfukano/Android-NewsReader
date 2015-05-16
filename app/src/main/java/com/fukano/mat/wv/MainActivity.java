@@ -12,26 +12,35 @@ import android.view.View;
 public class MainActivity extends Activity {
     Context context;
     @Override
+    /*
+     * Contextualizes view on creation
+     */
     protected void onCreate(Bundle savedInstanceState) {
         context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
+    /*
+     * List of onClick functions to redirect to different pages.
+     * Would have consolidated these but I didn't have time, so...
+     */
+
+    // Links to The Guardian
     public void onClickN1 (View v) {
         Intent intent = new Intent(context, ReaderActivity.class);
         String s = "http://www.theguardian.com/us";
         intent.putExtra("site", s);
         startActivity(intent);
     }
-
+    // Links to San Jose Mercury
     public void onClickN2(View v) {
         Intent intent = new Intent(context, ReaderActivity.class);
         String s = "http://www.mercurynews.com";
         intent.putExtra("site", s);
         startActivity(intent);
     }
-
+    // Links to Santa Cruz Sentinel
     public void onClickN3 (View v) {
         Intent intent = new Intent(context, ReaderActivity.class);
         String s = "http://www.santacruzsentinel.com";

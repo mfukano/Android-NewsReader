@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -15,14 +16,13 @@ import android.webkit.WebViewClient;
  */
 public class ReaderActivity extends Activity {
 
-    static final public String WEBPAGE_NOTHING = "about:blank";
+    WebView myWebView;  // public webView for access across methods
+    String site;        // variable holder for site string
 
-    private String suspendUrl = null;
-
-    WebView myWebView;
-    String site;
-
-
+/*
+ * Passes info by using intents, sets up web settings,
+ * and applies settings on webview all upon activity creation.
+ */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
@@ -42,6 +42,12 @@ public class ReaderActivity extends Activity {
         }
     }
 
+    /*
+     * Webview client that detects whether the user is remaining on the
+     * page or visiting a new page, at which point it'll open a browser.
+     * There's a special exception case for The Guardian, which was a
+     * particular use case based on the URL.
+     */
     private class MyWebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -49,13 +55,24 @@ public class ReaderActivity extends Activity {
                 // This is my web site, so do not override; let my WebView load the page
                 return false;
             }
+            else if(Uri.parse(url).getHost().equals("www.theguardian.com")){
+                // Use case for The Guardian
+                return false;
+            }
             // Otherwise, the link is not for a page on my site,
             // so launch another Activity that handles URLs
-            else{
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-                return true;
-            }
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+            return true;
         }
+    }
+
+    // Share button logic
+    public void sharePage(View v) {
+        Intent share = new Intent();
+        share.setAction(Intent.ACTION_SEND);
+        share.putExtra(Intent.EXTRA_TEXT, myWebView.getUrl());
+        share.setType("text/plain");
+        startActivity(Intent.createChooser(share, "Share link to..."));
     }
 
     /*

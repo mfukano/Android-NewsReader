@@ -1,24 +1,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context=".MainActivity">
+    android:layout_height="match_parent" tools:context=".MainActivity"
+    android:background="@color/bg">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="70dp">
+        android:layout_marginTop="30dp">
         <ImageButton
             android:layout_marginTop="20dp"
             android:id="@+id/button1"
+            android:src="@drawable/g"
             android:text="Prick"
             android:onClick="onClickN1"
-            android:padding="5dp"
             android:textColor="#ffffff"
             android:elevation="8dp"
             android:layout_gravity="center|top"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_alignParentBottom="true"
             android:tint="@android:color/white"
             android:background="@drawable/circle"/>
@@ -31,13 +32,13 @@
         <ImageButton
             android:id="@+id/button2"
             android:text="Prick"
+            android:src="@drawable/sjm"
             android:onClick="onClickN2"
-            android:padding="5dp"
             android:textColor="#ffffff"
             android:elevation="8dp"
             android:layout_gravity="center"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_alignParentBottom="true"
             android:tint="@android:color/white"
             android:background="@drawable/circle2"/>
@@ -47,18 +48,19 @@
         android:layout_height="match_parent"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginBottom="70dp">
+        android:layout_marginBottom="30dp">
     <ImageButton
         android:layout_marginBottom="20dp"
         android:id="@+id/button3"
+        android:src="@drawable/scs"
+        android:scaleType="fitCenter"
         android:text="Prick"
         android:onClick="onClickN3"
-        android:padding="5dp"
         android:textColor="#ffffff"
         android:elevation="8dp"
         android:layout_gravity="center|bottom"
-        android:layout_width="100sp"
-        android:layout_height="100sp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:layout_alignParentBottom="true"
         android:tint="@android:color/white"
         android:background="@drawable/circle3"/>
